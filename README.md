@@ -4,13 +4,17 @@ Static website for House Cleaning Pro LLC, serving Charlotte, Monroe, Waxhaw, Fo
 
 ## Local preview
 
-Open `index.html` directly, or run a local server:
+Run a local server from the project directory:
 
 ```bash
 python -m http.server 4173
 ```
 
 Then open `http://127.0.0.1:4173/`.
+
+Opening `index.html` directly via `file://` is suitable only for viewing the
+layout. FormSubmit requires a web server to submit forms. With JavaScript
+enabled, the page explains this limitation and preserves the entered details.
 
 ## Form delivery
 
@@ -20,11 +24,13 @@ through the `_cc` field. Each form has its own email subject. Newsletter
 requests are emailed for manual handling; they do not create a mailing list.
 
 After the first submission, open the activation email from FormSubmit in that
-mailbox and confirm the recipient address to enable delivery. FormSubmit handles
-reCAPTCHA, then redirects to the full website URL through `_next`, preserving
-the GitHub Pages project path or the current custom domain. Without JavaScript,
-the return URL defaults to `https://housecleaningpro.github.io/house-cleaning-pro-website/`.
-Test delivery from the hosted website after activation.
+mailbox and confirm the recipient address to enable delivery. With JavaScript,
+both forms use FormSubmit's AJAX endpoint and display sending, success, or error
+messages on the same page. Buttons are disabled while sending; failed requests
+preserve the entered details. A success response resets the form.
+Without JavaScript, normal FormSubmit submission and reCAPTCHA remain available,
+with `_next` returning to `https://housecleaningpro.github.io/house-cleaning-pro-website/`.
+Test real email delivery from the hosted website after activation.
 
 ## Included
 

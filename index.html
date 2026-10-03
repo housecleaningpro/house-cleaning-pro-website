@@ -134,6 +134,10 @@
       .required-label { color: #52616d; font-size: 12px; font-weight: 400; white-space: nowrap; margin-left: 6px; }
       .field-error { color: #b42318; font-size: 14px; margin-top: 6px; }
       #estimate-form [aria-invalid="true"] { border-color: #b42318; }
+      .form-status { font-size: 14px; margin-top: 16px; }
+      .form-status[data-state="success"] { color: #16703c; }
+      .form-status[data-state="error"] { color: #b42318; }
+      form button:disabled { opacity: .65; cursor: wait; }
     </style>
 <!-- Schema.org -->
 <script type="application/ld+json">
@@ -1120,6 +1124,76 @@ Read More Reviews on Thumbtack
   });
   // Keep native required validation as a fallback when JavaScript is unavailable.
   estimateForm.noValidate = true;
+
+  function enableInlineSubmission(form, successMessage) {
+    const status = document.createElement('p');
+    status.className = 'form-status';
+    status.id = form.id + '-status';
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    status.setAttribute('aria-atomic', 'true');
+    form.insertAdjacentElement('afterend', status);
+    const button = form.querySelector('button[type="submit"]');
+    const originalLabel = button.innerHTML;
+    let sending = false;
+
+    form.addEventListener('submit', async (event) => {
+      if (event.defaultPrevented) return;
+      event.preventDefault();
+      if (sending) return;
+      if (location.protocol === 'file:') {
+        status.dataset.state = 'error';
+        status.textContent = 'To send this form, open the website through a web server (for example, http://127.0.0.1:4173/), rather than opening the HTML file directly. Your details are still here.';
+        return;
+      }
+      sending = true;
+      const payload = new FormData(form);
+      payload.delete('_next');
+      button.disabled = true;
+      button.textContent = 'Sending...';
+      form.setAttribute('aria-busy', 'true');
+      status.dataset.state = 'sending';
+      status.textContent = 'Sending your request...';
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 30000);
+      try {
+        const response = await fetch(form.action.replace('https://formsubmit.co/', 'https://formsubmit.co/ajax/'), {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: payload,
+          signal: controller.signal
+        });
+        const result = await response.json();
+        if (!response.ok || (result.success !== true && result.success !== 'true')) {
+          throw new Error('Submission was not confirmed');
+        }
+        status.dataset.state = 'success';
+        status.textContent = successMessage;
+        form.reset();
+        if (form === estimateForm) {
+          submitAttempted = false;
+          errorSummary.hidden = true;
+          requiredFields.forEach((field) => {
+            field.setCustomValidity('');
+            field.removeAttribute('aria-invalid');
+            document.getElementById(field.id + '-error').hidden = true;
+          });
+        }
+      } catch (error) {
+        status.dataset.state = 'error';
+        status.textContent = 'We could not confirm your request. Your details are still here. Please try again, or call (704) 574-5382.';
+      } finally {
+        clearTimeout(timeout);
+        sending = false;
+        button.disabled = false;
+        button.innerHTML = originalLabel;
+        form.removeAttribute('aria-busy');
+      }
+    });
+  }
+
+  enableInlineSubmission(estimateForm, 'Thank you! Your estimate request has been sent. We will get back to you within 24 hours.');
+  enableInlineSubmission(document.getElementById('newsletter-form'), 'Thank you! Your newsletter subscription request has been sent.');
 
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
