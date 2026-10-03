@@ -12,6 +12,18 @@ python -m http.server 4173
 
 Then open `http://127.0.0.1:4173/`.
 
+## Form delivery
+
+The estimate and newsletter forms POST to FormSubmit and deliver submissions to
+`hcleaningpro123@gmail.com`, with a testing copy to `atyom.khmyz@gmail.com`
+through the `_cc` field. Each form has its own email subject. Newsletter
+requests are emailed for manual handling; they do not create a mailing list.
+
+After the first submission, open the activation email from FormSubmit in that
+mailbox and confirm the recipient address to enable delivery. FormSubmit handles
+reCAPTCHA and displays its confirmation page after submission. Test delivery from
+the hosted website after activation.
+
 ## Included
 
 - Responsive single-page website
