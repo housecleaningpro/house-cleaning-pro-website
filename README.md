@@ -19,7 +19,7 @@ enabled, the page explains this limitation and preserves the entered details.
 ## Form delivery
 
 The estimate and newsletter forms POST to FormSubmit and deliver submissions to
-`hcleaningpro123@gmail.com`, with a testing copy to `atyom.khmyz@gmail.com`
+`hcleaningpro123@gmail.com`, with a testing copy to `artyom.khmyz@gmail.com`
 through the `_cc` field. Each form has its own email subject. Newsletter
 requests are emailed for manual handling; they do not create a mailing list.
 
