@@ -21,8 +21,10 @@ requests are emailed for manual handling; they do not create a mailing list.
 
 After the first submission, open the activation email from FormSubmit in that
 mailbox and confirm the recipient address to enable delivery. FormSubmit handles
-reCAPTCHA and displays its confirmation page after submission. Test delivery from
-the hosted website after activation.
+reCAPTCHA, then redirects to the full website URL through `_next`, preserving
+the GitHub Pages project path or the current custom domain. Without JavaScript,
+the return URL defaults to `https://housecleaningpro.github.io/house-cleaning-pro-website/`.
+Test delivery from the hosted website after activation.
 
 ## Included
 

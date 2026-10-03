@@ -131,6 +131,9 @@
         color: transparent;
       }
       .logo-mark { filter: drop-shadow(0 6px 14px rgba(7, 151, 238, .18)); }
+      .required-label { color: #52616d; font-size: 12px; font-weight: 400; white-space: nowrap; margin-left: 6px; }
+      .field-error { color: #b42318; font-size: 14px; margin-top: 6px; }
+      #estimate-form [aria-invalid="true"] { border-color: #b42318; }
     </style>
 <!-- Schema.org -->
 <script type="application/ld+json">
@@ -837,26 +840,29 @@ Read More Reviews on Thumbtack
 </div>
 <div class="bg-white p-8 md:p-10 rounded-2xl ambient-shadow">
 <form action="https://formsubmit.co/hcleaningpro123@gmail.com" method="POST" class="space-y-6" id="estimate-form">
+<input type="hidden" name="_next" value="https://housecleaningpro.github.io/house-cleaning-pro-website/#contact"/>
+<p class="font-body-md text-body-md text-on-surface-variant">All fields are required except Message.</p>
+<p class="field-error" id="estimate-errors" role="alert" hidden>Please complete the required fields and correct the errors below.</p>
 <input type="hidden" name="_subject" value="House Cleaning Pro — New estimate request"/>
 <input type="hidden" name="_cc" value="atyom.khmyz@gmail.com"/>
 <input type="hidden" name="_template" value="table"/>
 <input type="text" name="_honey" hidden tabindex="-1" autocomplete="off"/>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 <div>
-<label class="block font-label-md text-label-md text-on-surface mb-2" for="estimate-name">Name</label>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="estimate-name">Name <span class="required-label">Required</span></label>
 <input class="w-full bg-surface border-secondary-container rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="estimate-name" name="name" autocomplete="name" placeholder="Your full name" type="text" required/>
 </div>
 <div>
-<label class="block font-label-md text-label-md text-on-surface mb-2" for="estimate-phone">Phone</label>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="estimate-phone">Phone <span class="required-label">Required</span></label>
 <input class="w-full bg-surface border-secondary-container rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="estimate-phone" name="phone" autocomplete="tel" placeholder="(704) 000-0000" type="tel" required/>
 </div>
 </div>
 <div>
-<label class="block font-label-md text-label-md text-on-surface mb-2" for="estimate-email">Email</label>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="estimate-email">Email <span class="required-label">Required</span></label>
 <input class="w-full bg-surface border-secondary-container rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="estimate-email" name="email" autocomplete="email" placeholder="email@example.com" type="email" required/>
 </div>
 <div>
-<label class="block font-label-md text-label-md text-on-surface mb-2" for="cleaning-type">Cleaning type</label>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="cleaning-type">Cleaning type <span class="required-label">Required</span></label>
 <select class="w-full bg-surface border-secondary-container rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="cleaning-type" name="cleaning_type" required>
 <option>Deep cleaning</option>
 <option>Heavy Deep cleaning</option>
@@ -870,15 +876,15 @@ Read More Reviews on Thumbtack
 </select>
 </div>
 <div>
-<label class="block font-label-md text-label-md text-on-surface mb-2" for="pets">Do you have any pets? If so, how many?</label>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="pets">Do you have any pets? If so, how many? <span class="required-label">Required</span></label>
 <input class="w-full bg-surface border-secondary-container rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="pets" name="pets" placeholder="e.g. No pets, or 2 dogs and 1 cat" type="text" required/>
 </div>
 <div>
-<label class="block font-label-md text-label-md text-on-surface mb-2" for="estimate-date">Preferred Date for Estimate</label>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="estimate-date">Preferred Date for Estimate <span class="required-label">Required</span></label>
 <input class="w-full bg-surface border-secondary-container rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="estimate-date" name="estimate_date" type="date" required/>
 </div>
 <div>
-<label class="block font-label-md text-label-md text-on-surface mb-2" for="cleaning-timeframe">When would you like to have your home cleaned?</label>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="cleaning-timeframe">When would you like to have your home cleaned? <span class="required-label">Required</span></label>
 <select class="w-full bg-surface border-secondary-container rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="cleaning-timeframe" name="cleaning_timeframe" required>
 <option>As soon as possible</option>
 <option>Within a few days</option>
@@ -1008,6 +1014,7 @@ Read More Reviews on Thumbtack
 <h4 class="font-headline-md text-headline-md text-on-surface mb-6">Newsletter</h4>
 <p class="font-body-md text-body-md text-on-surface-variant mb-4">Cleaning tips and local offers.</p>
 <form action="https://formsubmit.co/hcleaningpro123@gmail.com" method="POST" class="relative w-full max-w-[320px]" id="newsletter-form">
+<input type="hidden" name="_next" value="https://housecleaningpro.github.io/house-cleaning-pro-website/"/>
 <input type="hidden" name="_subject" value="House Cleaning Pro — Newsletter subscription request"/>
 <input type="hidden" name="_cc" value="atyom.khmyz@gmail.com"/>
 <input type="hidden" name="_template" value="table"/>
@@ -1037,6 +1044,83 @@ Read More Reviews on Thumbtack
 </a>
 </div>
 <script>
+  // Preserve the full hosting path rather than FormSubmit's origin-only return link.
+  if (location.protocol === 'https:' || location.protocol === 'http:') {
+    const returnUrl = new URL(location.pathname, location.origin);
+    document.querySelectorAll('form input[name="_next"]').forEach((input) => {
+      returnUrl.hash = input.form.id === 'estimate-form' ? 'contact' : '';
+      input.value = returnUrl.href;
+    });
+  }
+  const estimateForm = document.getElementById('estimate-form');
+  const requiredFields = [...estimateForm.querySelectorAll('[required]')];
+  const errorSummary = document.getElementById('estimate-errors');
+  let submitAttempted = false;
+
+  const requiredMessages = {
+    'estimate-name': 'Please enter your name.',
+    'estimate-phone': 'Please enter your phone number.',
+    'estimate-email': 'Please enter your email address.',
+    'cleaning-type': 'Please select a cleaning type.',
+    pets: 'Please tell us about your pets, or enter "No pets".',
+    'estimate-date': 'Please choose your preferred date for the estimate.',
+    'cleaning-timeframe': 'Please select a cleaning timeframe.'
+  };
+
+  requiredFields.forEach((field) => {
+    const error = document.createElement('p');
+    error.id = field.id + '-error';
+    error.className = 'field-error';
+    error.hidden = true;
+    field.insertAdjacentElement('afterend', error);
+    field.setAttribute('aria-describedby', error.id);
+  });
+
+  function validateEstimateField(field) {
+    field.setCustomValidity('');
+    let message = '';
+    if (field.validity.badInput) {
+      message = 'Please enter a valid date.';
+    } else if (!field.value.trim()) {
+      message = requiredMessages[field.id];
+    } else if (field.type === 'email' && field.validity.typeMismatch) {
+      message = 'Please enter a valid email address, such as name@example.com.';
+    } else if (field.type === 'tel' && !/^\+?[\d\s().-]+$/.test(field.value.trim())) {
+      message = 'Please enter a valid phone number.';
+    } else if (field.type === 'tel' && (field.value.replace(/\D/g, '').length < 10 || field.value.replace(/\D/g, '').length > 15)) {
+      message = 'Please enter a phone number with 10 to 15 digits.';
+    } else if (!field.validity.valid) {
+      message = field.validationMessage;
+    }
+    field.setCustomValidity(message);
+    field.setAttribute('aria-invalid', String(Boolean(message)));
+    const error = document.getElementById(field.id + '-error');
+    error.textContent = message;
+    error.hidden = !message;
+    return !message;
+  }
+
+  estimateForm.addEventListener('submit', (event) => {
+    submitAttempted = true;
+    const invalidFields = requiredFields.filter((field) => !validateEstimateField(field));
+    errorSummary.hidden = invalidFields.length === 0;
+    if (invalidFields.length) {
+      event.preventDefault();
+      invalidFields[0].focus();
+    }
+  });
+  requiredFields.forEach((field) => {
+    const revalidate = () => {
+      if (!submitAttempted) return;
+      validateEstimateField(field);
+      errorSummary.hidden = requiredFields.every((input) => input.validity.valid);
+    };
+    field.addEventListener('input', revalidate);
+    field.addEventListener('change', revalidate);
+  });
+  // Keep native required validation as a fallback when JavaScript is unavailable.
+  estimateForm.noValidate = true;
+
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   menuToggle.addEventListener('click', () => {
