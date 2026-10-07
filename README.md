@@ -29,8 +29,29 @@ both forms use FormSubmit's AJAX endpoint and display sending, success, or error
 messages on the same page. Buttons are disabled while sending; failed requests
 preserve the entered details. A success response resets the form.
 Without JavaScript, normal FormSubmit submission and reCAPTCHA remain available,
-with `_next` returning to `https://housecleaningpro.github.io/house-cleaning-pro-website/`.
+with `_next` returning to `https://cleaningproclt.com/`.
 Test real email delivery from the hosted website after activation.
+
+## Custom domain
+
+The production address is `https://cleaningproclt.com/`. The root `CNAME`
+file configures this domain for branch-based GitHub Pages publishing.
+In repository Settings > Pages, confirm the custom domain is
+`cleaningproclt.com` (required separately for Actions-based publishing).
+
+At NameSilo, replace parking records for the root and `www` with:
+
+| Type | Host | Value |
+| --- | --- | --- |
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+| CNAME | www | housecleaningpro.github.io |
+
+Use a blank host for the root if NameSilo requires it. Preserve unrelated
+email and verification records. Once DNS checks pass and GitHub issues the
+certificate, enable Enforce HTTPS in Settings > Pages.
 
 ## Included
 
