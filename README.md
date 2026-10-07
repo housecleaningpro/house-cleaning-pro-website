@@ -61,3 +61,12 @@ certificate, enable Enforce HTTPS in Settings > Pages.
 - LocalBusiness, WebSite, WebPage, and FAQ structured data
 - Open Graph and Twitter sharing image
 - `robots.txt` and `sitemap.xml`
+
+## Fonts
+
+Text fonts are self-hosted WOFF2 files in `assets/fonts/`, retaining the original
+character coverage and metrics. `assets/fonts.css` references these files rather
+than embedding base64 TTF data, so font downloads no longer block CSS parsing.
+The Material Symbols font contains only the icons currently used by the page,
+including the mobile menu's dynamic `close` icon. When adding another icon,
+regenerate that subset from the full font or use an SVG.
