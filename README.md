@@ -72,3 +72,11 @@ regenerate that subset from the full font or use an SVG.
 Text fonts use font-display: optional to prevent late font swaps on slow connections.
 Inline styles are generated: after CSS edits run `python scripts/inline-styles.py`.
 Full text font files remain available as sources for future language subsets.
+
+## Analytics loading
+
+GTM-PZ7J7HFN loads after the window load event, using requestIdleCallback with a
+2-second timeout (setTimeout fallback). The dataLayer is available immediately.
+GA4 is managed inside GTM; do not add a second direct Google tag. Visits that end
+before the container loads and early automatic interactions may not be recorded.
+The delay does not reduce the total size of the Google scripts.
