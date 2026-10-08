@@ -224,12 +224,12 @@ select { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.o
 .pt-xl { padding-top: 80px; }
 .text-left { text-align: left; }
 .text-center { text-align: center; }
-.font-body-lg { font-family: Inter; }
-.font-body-md { font-family: Inter; }
-.font-display-lg { font-family: "Plus Jakarta Sans"; }
-.font-headline-lg { font-family: "Plus Jakarta Sans"; }
-.font-headline-md { font-family: "Plus Jakarta Sans"; }
-.font-label-md { font-family: Inter; }
+.font-body-lg { font-family: Inter, Arial, sans-serif; }
+.font-body-md { font-family: Inter, Arial, sans-serif; }
+.font-display-lg { font-family: "Plus Jakarta Sans", Arial, sans-serif; }
+.font-headline-lg { font-family: "Plus Jakarta Sans", Arial, sans-serif; }
+.font-headline-md { font-family: "Plus Jakarta Sans", Arial, sans-serif; }
+.font-label-md { font-family: Inter, Arial, sans-serif; }
 .text-\[18px\] { font-size: 18px; }
 .text-\[20px\] { font-size: 20px; }
 .text-\[32px\] { font-size: 32px; }
